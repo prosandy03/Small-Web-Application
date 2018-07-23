@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-family: "Cambria Math", sans-serif;
+        }
+        div{
+            background-color: gray;
+            color: white;
+            width: 400px;
+            padding: 10px;
+            text-align: center;
+            margin: auto;
+            outline: 2px solid black;
+        }
+        table{
+            margin: auto;
+        }
+        table tr td{
+            padding: 5px;
+            font-size: 20px;
+
+        }
+        input[type="text"]{
+            padding: 5px;
+            font-size: 20px;
+            border: none;
+        }
+        input[type="button"]{
+            width: 60px;
+            height: 40px;
+            font-size: 30px;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body ng-app="myapp" ng-controller="c1" >
+<div>
+<h1>Simple Calculator</h1>
+    <table>
+        <tr>
+            <td><input type="text" ng-model="t1" placeholder="Enter First Number"> </td>
+        </tr>
+        <tr>
+            <td><input type="text" ng-model="t2" placeholder="Enter Second Number"></td>
+        </tr>
+        <tr>
+            <td><p ng-bind="resty"></p></td>
+        </tr>
+        <tr>
+            <td><p ng-bind="res"></p></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="+" ng-click="funadd()">
+            <input type="button" value="-" ng-click="funsub()">
+            <input type="button" value="*" ng-click="funmul()">
+            <input type="button" value="/" ng-click="fundiv()"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+<script src="angular.min.js"></script>
+<script>
+    app=angular.module("myapp",[])
+    app.controller("c1",function ($scope) {
+        $scope.funadd=function () {
+            $scope.res=parseInt($scope.t1)+parseInt($scope.t2);
+            $scope.resty="Addition Result";
+        }
+        $scope.funsub=function () {
+            $scope.res=$scope.t1-$scope.t2;
+            $scope.resty="Subtraction Result"
+        }
+        $scope.funmul=function () {
+            $scope.res=$scope.t1*$scope.t2;
+            $scope.resty="Multiplication Result"
+        }
+        $scope.fundiv=function () {
+            $scope.res=$scope.t1/$scope.t2;
+            $scope.resty="Divtion Result"
+        }
+    })
+</script>
+</html>

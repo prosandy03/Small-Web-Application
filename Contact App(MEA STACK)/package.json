@@ -1,0 +1,7 @@
+{
+  "name": "MEAN stack programming",
+  "version": "0.0.1",
+  "dependencies": {
+    "mongojs": "^2.6.0"
+  }
+}

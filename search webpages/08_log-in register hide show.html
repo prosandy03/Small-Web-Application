@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login/register</title>
+    <style>
+        body{
+            background-image: url("img/back3.jpg");
+            background-size: cover;
+            font-family: "Cambria Math",sans-serif;
+            text-align: center;
+
+        }
+        h1{
+            background-color: rgba(19,88,211,0.6);
+            color: white;
+            box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+            margin: 5px;
+            font-size: 25px;
+            padding: 5px;
+        }
+        div{
+            background-color: rgba(169,118,247,0.5);
+            margin: auto;
+            padding: 10px;
+            width: 420px;
+            height: auto;
+            box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        h2{
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            margin: auto;
+            width: 30%;
+            padding: 5px;
+        }
+        table,td,tr{
+            margin: 5px;
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+
+        }
+        input[type="text"],input[type="password"]{
+            width: 250px;
+            height: 25px;
+            outline: none;
+            border: none;
+            font-size: 20px;
+        }
+         input[type="submit"]{
+
+             border: none;
+             width: 120px;
+             background-color: blueviolet;
+             font-size: 18px;
+             padding: 5px;
+             box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+             color: white;
+         }
+        input[type="button"]{
+            border: none;
+            background-color: rgba(169,118,247,0.5);
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+
+    </style>
+</head>
+<body ng-app="" ng-init="tmp=true">
+<h1>PRO-GRAPHICS</h1>
+<h2>The professional software provider</h2>
+<input type="button" VALUE="Log-in" ng-click="tmp=true" >
+<input type="button" value="Register" ng-click="tmp=false" >
+<div ng-show="tmp">
+    <h1>Welcome Again</h1>
+    <table border="0">
+        <tr>
+            <td>Username</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Log-in"></td>
+        </tr>
+    </table>
+</div>
+<div ng-hide="tmp">
+    <h1>Register Your Data</h1>
+    <table border="0">
+        <tr>
+            <td>Full-Name</td>
+            <td><input type="text"></td>
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td><input type="text"></td>
+
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Register"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+<script src="angular.min.js">
+
+
+</script>
+</html>

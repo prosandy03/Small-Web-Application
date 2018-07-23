@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Orderd By</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    h1{
+        background-color: black;
+        color: whitesmoke;
+        padding: 20px;
+        width: 40%;
+        margin: auto;
+    }
+    table{
+        margin: auto;
+        border: none;
+        outline: none;
+        width: 30%;
+    }
+    table tr:nth-child(even){
+        background-color: lightgray;
+        padding: 5px;
+
+    }
+    table th{
+        background-color: #5e5e5e;
+        color: white;
+        padding: 5px;
+        cursor: pointer;
+
+    }
+    table tr:nth-child(odd){
+        padding: 5px;
+
+
+    }
+    table td{
+        outline: none;
+        padding: 5px;
+    }
+
+
+</style>
+<body ng-app="table" ng-controller="c1">
+<h1>TABLE ORDERED BY ASENDING</h1>
+<br>
+<table>
+    <tr>
+        <th ng-click="fun1()">Name {{si}}</th>
+        <th>City</th>
+        <th>Age</th>
+    </tr>
+    <tr ng-repeat="val in x | orderBy:temp">
+        <td >{{val.uname}}</td>
+        <td>{{val.city}}</td>
+        <td>{{val.age}}</td>
+    </tr>
+</table>
+</body>
+<script src="angular.min.js"></script>
+<script>
+    app=angular.module('table',[]);
+    app.controller("c1",function ($scope) {
+        $scope.temp='uname';
+        $scope.si="(A-Z)";
+        $scope.x=[{uname:"Sandip",city:"hyd",age:20},{uname:"Das",city:"NewYork",age:24},
+            {uname:"pro",city:"sanhai",age:26},{uname:"Snady",city:"paris",age:30},{uname:"Sandip das",city:"London",age:32}
+            ,{uname:"pro-Snady",city:"Scotland",age:35}];
+        $scope.fun1=function () {
+            if($scope.temp==="uname"){
+                $scope.temp="-uname";
+                $scope.si="(Z-A)";
+            }
+            else {
+                $scope.temp="uname";
+                $scope.si="(A-Z)";
+            }
+        }
+    })
+</script>
+</html>

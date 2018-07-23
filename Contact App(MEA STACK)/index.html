@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 1px;
+            font-family: "Cambria Math", sans-serif;
+        }
+        h1{
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: auto;
+            width: 80%;
+        }
+        #lefttable{
+            float: left;
+            margin-top:40px;
+            margin-left:130px;
+            width: 50%;
+
+        }
+        #lefttable h2{
+            background-color: darkslategrey;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        #lefttable table{
+            margin: 20px;
+            border: none;
+            outline: none;
+            background-color: whitesmoke;
+        }
+        #lefttable table tr th{
+            background-color:rgb(248,230,62);
+            border: none;
+            outline: 1px solid rgb(248,230,62);
+            width: 100px;
+            padding: 10px;
+
+        }
+        #lefttable table tr{
+            border: none;
+        }
+        #lefttable table tr td{
+            padding: 10px;
+            text-align: center;
+            border: none;
+            outline:none;
+            font-size: 12px;
+            font-family: "",sans-serif;
+            cursor: pointer;
+
+        }
+        #lefttable table tr:hover{
+            background-color: lightblue;
+
+        }
+
+        #rightpic{
+
+            width: 30%;
+            float: right;
+            margin-top:40px;
+            margin-right: 10%;
+            text-align: center;
+        }
+        #rightpic h2{
+            background-color: darkslategrey;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        #insertion table{
+            margin: auto;
+            text-align: center;
+        }
+        #insertion table{
+            width:250px
+        }
+        input[type="text"],input[type="text"],input[type="number"],input[type="email"]{
+            padding: 5px;
+            font-size: 15px;
+            border-left:none;
+            border-right:none;
+            border-top: none;
+            border-bottom: 1px solid darkslategray;
+            width: 90%;
+
+        }
+        input[type="button"]{
+            font-size: 15px;
+            border:none;
+            width: 35%;
+            margin: 10px;
+            background-color: black;
+            color: white;
+            height: 40px;
+
+        }
+        input[type="button"]:hover{
+            background-color: darkslategray;
+            cursor: pointer;
+        }
+        label,input[type="radio"]:hover{
+            cursor: pointer;
+        }
+        img{
+            border-radius: 50%;
+        }
+
+
+    </style>
+</head>
+<body ng-app="myapp" ng-controller="c1">
+<h1>CONTACTS APP</h1>
+<div id="lefttable">
+<h2>Contact List</h2>
+    <table>
+        <tr>
+            <th>Sno.</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>email</th>
+        </tr>
+        <tr ng-repeat="val in userdata" ng-click="showdata($index)">
+            <td>{{$index+1}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.gender}}</td>
+            <td>{{val.city}}</td>
+            <td>{{val.phone}}</td>
+            <td>{{val.email}}</td>
+        </tr>
+    </table>
+</div>
+<div id="rightpic">
+    <h2>Details</h2>
+    <img src="{{imgfile}}" width="40%" height="auto" >
+    <div id="insertion">
+        <form>
+        <table>
+            <tr ng-show="imgshow">
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+
+                <td><h3 ng-bind="shname" ng-hide="insertion"></h3><input type="text" placeholder="Name" ng-show="insertiont" ng-model="txtname" required ></td>
+            </tr>
+            <tr>
+                <td>{{shcity}}<input type="text" placeholder="City" ng-show="insertiont" ng-model="txtcity" required></td>
+            </tr>
+            <tr>
+                <td>{{shphone}}<input type="number"  placeholder="Phone.No" ng-show="insertiont" ng-model="txtphone" required></td>
+            </tr>
+            <tr>
+                <td>{{shemail}}<input type="email" placeholder=" Email" ng-show="insertiont" ng-model="txtemail" required></td>
+            </tr>
+            <tr>
+                <td>Gender: {{shgender}}<label ng-show="insertiont"><input type="radio" VALUE="male" name="gender" ng-model="txtgender" required>Male </label>&nbsp;&nbsp;<label ng-show="insertiont"><input type="radio" VALUE="female" name="gender" ng-model="txtgender" required>Female </label></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="Create" ng-show="insertion" ng-click="funins()">
+                    <input type="button" value="Edit" ng-show="editing" ng-click="funedit()">
+                    <input type="button" value="Done" ng-show="done" ng-click="funupdate()">
+                    <input type="button" value="Clear" ng-show="done" ng-click="funclear()">
+                    <input type="button" value="Del" ng-show="editing" ng-click="fundelete(shname)">
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</div>
+</body>
+<script src="angular.min.js"></script>
+<script src="app.js">
+</script>
+
+</html>

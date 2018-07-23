@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter SearchEngine</title>
+</head>
+<style>
+    body{
+        background-image: url("img/back5.jpg");
+        background-size: cover;
+        font-family: "Gill Sans Ultra Bold Condensed", sans-serif;
+        text-align: center;
+    }
+    span{
+        font-size: 95px;
+        color: rgba(233,30,99,0.8);
+
+    }
+    h1{
+        font-size: 95px;
+        color: rgba(22,32,40,0.8);
+
+        margin-left:0;
+        margin-top: 10%;
+        text-align: center;
+        margin-bottom:0px;
+
+    }
+    h4{
+        text-align: center;
+        margin-top: 0px;
+        font-size: 20px;
+
+    }
+    input[type="text"]{
+        outline: none;
+        width: 40%;
+        font-size: 20px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid darkblue;
+    }
+    input[type="text"]:hover {
+       box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    input[type="text"]:focus {
+        box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    input[type="button"]{
+        background-color: rgb(243,243,243);
+        width: 120px;
+        height: 30px;
+        margin-top: 20px;
+        margin-left: 10px;
+        border:none;
+        font-size: 15px;
+        color:rgb(117,117,117);
+        border-radius: 5px;
+    }
+    input[type="button"]:hover{
+        border: 1px solid rgba(0, 0, 0, 0.19);
+    }
+    ul li{
+        list-style: none;
+
+        margin: 2px;
+        width:auto;
+        text-align: left;
+        padding: 5px;
+        cursor: pointer;
+    }
+    ul li:hover{
+        background-color: white;
+    }
+    ul{
+        margin: auto;
+    }
+    #sug{
+        width: 43%;
+        margin-left:27%;
+        text-align: center;
+        margin-bottom:0px;
+
+    }
+
+</style>
+<body ng-app="myapp" ng-controller="c1">
+<h1><span>PRO</span>SEARCH<br><h4>World's Most Private Search Engine</h4></h1>
+<input type="text" ng-keyup="change()" ng-model="t1">
+<div id="sug" ng-show="listv">
+    <ul >
+    <li ng-repeat="value in val|filter:t1" ng-click="valupon(value)" ng-bind-html="value |f1:t1"></li>
+    </ul>
+
+</div>
+<div ng-hide="listv">
+    <input type="button" value="Search" ng-click="fun8()">
+    <input type="button" value="Image Search">
+</div>
+
+</body>
+<script src="angular.min.js"></script>
+<script src="source/angular-1.7.0/angular-sanitize.js"></script>
+<script>
+app=angular.module("myapp",['ngSanitize']);
+    app.controller("c1",function ($scope) {
+        $scope.t1="";
+        $scope.listv=false;
+        $scope.val=["Log-in/Register","Orderby Table Filter","Calculator","sandip","hole prolem","google.com","sand","computer","angular"];
+        $scope.change=function () {
+            if($scope.t1!='') {
+                $scope.listv = true;
+            }
+            else{
+                $scope.listv = false;
+            }
+        };
+        $scope.valupon=function (v) {
+            $scope.t1=v;
+            $scope.listv = false;
+
+        };
+        $scope.fun8=function () {
+            if($scope.t1===$scope.val[0]) {
+                window.location = "08_log-in register hide show.html"
+            }
+            else if($scope.t1===$scope.val[1]){
+                window.location = "28_Filter(table as orderby).html"
+            }
+            else if($scope.t1===$scope.val[2]){
+                window.location = "15_simple calculator.html"
+            }
+            else{
+                window.location = "eroor.html"
+
+            }
+        }
+
+    });
+    app.filter("f1",function () {
+        return function(val,txt){
+                str=""
+                str1="<b>"+txt+"</b>"
+                arr=val.split(txt);
+                str=arr.join(str1);
+                return str;
+
+        }
+    })
+</script>
+</html>
